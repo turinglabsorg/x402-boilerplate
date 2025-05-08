@@ -7,7 +7,9 @@ import { config } from "dotenv";
 config();
 
 const baseURL = "http://localhost:3000";
+const publicURL = "https://x402-boilerplate-828110571677.us-central1.run.app";
 const endpointPath = "/quote";
+const usePublicURL = true;
 
 // Create a wallet client (using your private key)
 // Go there to get USDC: https://faucet.circle.com
@@ -21,7 +23,7 @@ console.log("Calling", baseURL + endpointPath, "with account", account.address);
 
 const api = withPaymentInterceptor(
   axios.create({
-    baseURL, // e.g. https://api.example.com
+    baseURL: usePublicURL ? publicURL : baseURL,
   }),
   account
 );
