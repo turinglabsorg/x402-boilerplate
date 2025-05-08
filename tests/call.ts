@@ -19,7 +19,12 @@ if (!process.env.PRIVATE_KEY) {
 }
 const account = privateKeyToAccount(process.env.PRIVATE_KEY as `0x${string}`);
 
-console.log("Calling", baseURL + endpointPath, "with account", account.address);
+console.log(
+  "Calling",
+  usePublicURL ? publicURL + endpointPath : baseURL + endpointPath,
+  "with account",
+  account.address
+);
 
 const api = withPaymentInterceptor(
   axios.create({
